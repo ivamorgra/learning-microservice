@@ -82,6 +82,14 @@ const validateAuthorAmongPurchasers = async function (this: MaterialDoc) {
 
 materialSchema.pre('save', validateAuthorAmongPurchasers)
 
+materialSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+        delete returnedObject.__v
+    },
+})
+
 materialSchema.statics.build = (material: IMaterial) => {
     return new Material(material)
 }

@@ -1,5 +1,5 @@
-import express, {Request, Response} from 'express';
-import { User } from '../db/models/user';
+import express, { Request, Response } from 'express'
+import { User } from '../db/models/user'
 
 const router = express.Router()
 
@@ -12,7 +12,7 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/login', async (req: Request, res: Response) => {
     const { email, password }: FormInputs = req.body
 
-    const user = await User.findOne({email, password});
+    const user = await User.findOne({ email, password })
 
     if (!user) {
         return res.status(404).send('User Not Found!')
@@ -22,18 +22,19 @@ router.post('/login', async (req: Request, res: Response) => {
 })
 
 router.post('/', async (req: Request, res: Response) => {
-  const { email, password }: FormInputs = req.body
+    const { email, password }: FormInputs = req.body
 
-  let name = "Test User";
+    let name = 'Test User'
 
-  const user = User.build({
-    name: name, 
-    email: email, 
-    password: password});
+    const user = User.build({
+        name: name,
+        email: email,
+        password: password,
+    })
 
-  await user.save();
+    await user.save()
 
-  return res.status(201).json(user)
+    return res.status(201).json(user)
 })
 
 export default router

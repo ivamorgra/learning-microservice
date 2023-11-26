@@ -3,7 +3,7 @@ import { Material } from './models/material'
 
 import mongoose from 'mongoose'
 
-const authorId1 = new mongoose.Types.ObjectId()
+const authorId1 = new mongoose.Types.ObjectId('60d5ecb44b930ac130e82d7e')
 const authorId2 = new mongoose.Types.ObjectId()
 const authorId3 = new mongoose.Types.ObjectId()
 const authorId4 = new mongoose.Types.ObjectId()
