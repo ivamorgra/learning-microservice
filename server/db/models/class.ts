@@ -44,6 +44,14 @@ const classSchema = new Schema({
     },
 });
 
+classSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+        delete returnedObject.__v
+    },
+})
+
 classSchema.statics.build = (classData: IClass) => {
     return new Class(classData)
 }
