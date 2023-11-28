@@ -11,7 +11,7 @@ COPY ./server .
 RUN npm install
 
 # Define a default environment variable if not provided during runtime
-RUN mv .env.prod .env
+RUN mv .env.dev .env
 
 # Expose a port if your React app runs a server (e.g., for development purposes)
 # EXPOSE 3000

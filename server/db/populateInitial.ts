@@ -1,7 +1,9 @@
 import { User } from './models/user'
 import { Material } from './models/material'
+import { Class } from './models/class'
 
 import mongoose from 'mongoose'
+
 
 const authorId1 = new mongoose.Types.ObjectId('60d5ecb44b930ac130e82d7e')
 const authorId2 = new mongoose.Types.ObjectId()
@@ -85,6 +87,22 @@ function populateMaterial() {
     }).save()
 }
 
+function populateClass(){
+    Class.build({
+        title: 'Clase 1',
+        description: 'Datos no estructurados',
+        order: 1,
+        file: 'fileId',
+    }).save()
+
+    Class.build({
+        title: 'Clase 2',
+        description: 'Los datalakes',
+        order: 2,
+        file: 'fileId',
+    }).save()
+}
+
 async function populateDB() {
     console.log('Populating DB...')
 
@@ -97,6 +115,11 @@ async function populateDB() {
         Material.collection.countDocuments().then((count) => {
             if (count === 0) {
                 populateMaterial()
+            }
+        })
+        Class.collection.countDocuments().then((count) => {
+            if (count === 0) {
+                populateClass()
             }
         })
     }
