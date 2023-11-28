@@ -14,7 +14,7 @@ services:
   #   networks:
   #     - sample-microservice
 
-  mongo-db:
+  mongo_db:
     image: mongo:6.0
     container_name: mongo-db
     environment:
@@ -54,6 +54,8 @@ services:
     #   - static:/usr/src/app/flatter-backend/media
     expose:
       - 8000
+    ports:
+      - 8000:8000
     depends_on:
       - mongo_db
     # links:

@@ -1,15 +1,17 @@
 import express, { Express, Request, Response } from 'express'
 import cors from 'cors'
 import users from './routes/users'
+import materials from './routes/materials'
 import './loadEnvironment'
 import './db/conn'
 
 const app: Express = express()
+const API_VERSION = '/api/v1'
 
 app.use(express.json())
 app.use(cors())
 
-app.get('/', (req: Request, res: Response) => {
+app.get(API_VERSION, (req: Request, res: Response) => {
     res.send('Hello World From the Typescript Server!')
 })
 
@@ -19,4 +21,7 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-app.use('/users', users)
+app.use(API_VERSION + '/users', users)
+app.use(API_VERSION + '/materials', materials)
+
+module.exports = app
