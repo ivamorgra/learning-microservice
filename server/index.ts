@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get(API_VERSION, (req: Request, res: Response) => {
-    res.send('Hello World From the Typescript Server!')
+    res.send('Hello World From the Typescript Server, I am testing CI/CD!')
 })
 
 const port = process.env.PORT ?? 8000
